@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Siakad {
+public class siakad {
 
     static Mahasiswa[] mahasiswa = new Mahasiswa[1000];
     static int jumlahData = 0;
@@ -26,6 +26,33 @@ public class Siakad {
         }
     }
 
+    public static void urutkanData() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Pilih algoritma pengurutan");
+        System.out.println("1. EXCHANGE SORT");
+        System.out.print("Pilih algoritma = ");
+        int algo = scanner.nextInt();
+        switch (algo) {
+            case 1: {
+                exchangeSort();
+                break;
+            }
+        }
+    }
+
+    public static void exchangeSort() {
+        for (int x = 0; x<jumlahData; x++) {
+            for (int y = x+1; y<jumlahData; y++) {
+                if (mahasiswa[x].getNim().compareTo(mahasiswa[y].getNim())>=1) {
+                    Mahasiswa temp = mahasiswa[x];
+                    mahasiswa[x] = mahasiswa[y];
+                    mahasiswa[y] = temp;
+                }
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int menu;
@@ -33,14 +60,17 @@ public class Siakad {
             System.out.println("Menu Siakad");
             System.out.println("1. Tambah data");
             System.out.println("2. Lihat data");
-            System.out.println("3. Keluar");
+            System.out.println("3. Urutkan data");
+            System.out.println("4. Keluar");
             System.out.print("Pilih menu = ");
             menu = scan.nextInt();
             if (menu == 1) {
                 tambahData();
             } else if (menu == 2) {
                 lihatData();
+            } else if (menu == 3){
+                urutkanData();
             }
-        } while (menu != 3);
+        } while (menu != 4);
     }
 }
