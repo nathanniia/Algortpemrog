@@ -1,3 +1,4 @@
+package UAS;
 import java.util.Scanner;
 public class siakad {
 
